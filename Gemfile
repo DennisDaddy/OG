@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'faker'
-
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'will_paginate'
