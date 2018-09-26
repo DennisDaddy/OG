@@ -1,2 +1,71 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% provide(:title, 'All posts') %>
+<!-- Page Header -->
+<header class="intro-header" id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Amazing Codes</h1>
+                    <hr class="small">
+                    <span class="subheading">Welcome to Amazers blog</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<hr>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8"> 
+
+            <div class="thumbnail">
+            <div class="post-preview">             
+
+               <% if (@posts.empty?) %> 
+               <p align="center">No posts! be the first person to create one.</p> 
+                <br>
+                <% else %>
+                  <% @posts.each do |post| %>
+                   <%= render post %>
+                  <% end %>
+                <% end %>
+                
+            </div>
+            </div>
+            
+        </div>
+        <!-- End col-md-8 -->
+        
+        <div class="col-md-4">
+            <div class="thumbnail" style="padding: 10px;">
+            <div class="about">
+                <h3 align="center">About Me</h3>
+                <hr>
+                <img style="float: right; margin: 0px 8px 8px 0px; padding: 4px; border: 1px solid #ccc;" src="/assets/dennis.jpg" width="35%">      
+
+                <p>Welcome to my blog!<br>
+                I'm a full-stack software engineer and UI/UX designer from Kenya.<br>
+                I believes in doing it today, not tomorrow. I enjoys gaming, lively hangouts with friends and family.<br>
+                You can also find me on <a href="">Facebook, Google+, LinkedIn, Github and Twitter.</a><br>
+                Thank you for visiting!
+                </p>                    
+            </div>
+            <hr>
+            <h3 align="center">Categories</h3>
+            <hr>                
+            <ul>             
+              <% Category.all.each do |category| %>
+              <%= link_to  category.name, category, class: "btn btn-default" %>
+               <% end %>             
+            </ul>              
+            </div>
+        </div>
+        <!-- End col-md-4 -->
+        
+    </div>
+    <!-- End row -->
+</div>
+<!-- End container -->
+

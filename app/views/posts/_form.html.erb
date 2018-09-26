@@ -1,0 +1,15 @@
+<%= form_for(@post) do |f| %>
+   <%= render 'shared/error_messages', object: f.object %>
+  
+    <%= f.label :title %> <span class="text-danger">*</span>
+    <%= f.text_field :title, class: 'form-control' %>
+
+    <%= f.label :content %> <span class="text-danger">*</span>
+    <%= f.text_area :content, class: 'form-control', :rows => 10, :cols => 60 %> 
+
+    <p>
+	<%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}, {:include_blank => "Select One"}%> 
+	</p>  
+	
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% end %>
