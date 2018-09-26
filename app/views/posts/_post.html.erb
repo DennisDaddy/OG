@@ -1,0 +1,20 @@
+<div class="thumbnail">
+<div class="post-preview">
+    <a href="post.html">
+        <h2 class="post-title">
+            <%= link_to post.title, post %>
+        </h2>
+        <h3 class="post-subtitle">
+            <%= truncate(post.content, length: 100, separator: ''){ link_to 'Read More', post_path(post) } %>
+        </h3>
+    </a>
+    <p class="post-meta"><i>Posted <%= time_ago_in_words(post.created_at) %> ago.</i></p>
+    <% if current_user?(post.user) %>
+	<%= link_to "Delete", post, method: :delete,
+	 data: { confirm: "You sure?" } %>
+	<%= link_to "Edit",edit_post_path(post) %>
+    <% end %>
+    
+    
+</div>
+</div>
