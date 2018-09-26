@@ -1,2 +1,23 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+
+<% provide(:title, "Categories") %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="center">
+        <h3>All Categories</h3>
+          <hr>
+     </div>                
+  </div>
+</div>
+
+<div class="row">
+  <ul>             
+      <% Category.all.each do |category| %>
+       <%= link_to  category.name, category, class: "btn btn-default" %>
+      <% end %>             
+  </ul>   
+
+</div>
+</div>
+

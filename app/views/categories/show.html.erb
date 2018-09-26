@@ -1,2 +1,39 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+
+<% provide(:title, "Categories") %>
+
+<section class="container">
+<div class="row">
+   <div class="col-md-8">
+	    <h3 align="center"><%= @category.name %></h3>
+	    <hr>	
+	<% @posts.each do |post| %>
+	   <div class="col-sm-6 col-md-3">
+	    <div class="media">                      
+	     <div class="media-body">
+	     <div class="thumbnail">   
+	    <strong><%= link_to post.title, post %></strong>    
+	    <p><%= truncate(post.content, length: 50, separator: ''){ link_to 'Read More', post_path(post) } %></p>    
+	      </div>
+	      </div>
+	    </div>   
+	   </div>
+	<% end %> 
+		<% if (@posts.empty?) %> 
+		   <p>Sorry, so far we don't have posts in this category be the first person to create one.</p>  
+		<% end %> 
+		<br>		
+	</div>
+
+	<div class="col-md-4">	
+	    <h3 align="center">Categories</h3>
+            <hr>                
+            <ul>             
+              <% Category.all.each do |category| %>
+              <%= link_to  category.name, category, class: "btn btn-default" %>
+               <% end %>             
+            </ul>    
+	    <hr>		
+	</div>    
+
+</div>
+</section>
